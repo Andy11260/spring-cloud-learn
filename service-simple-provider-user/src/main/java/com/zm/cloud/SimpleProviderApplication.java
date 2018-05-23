@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 服务提供者
  */
 @SpringBootApplication
-public class ServiceSimpleProviderUserApplication {
+public class SimpleProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServiceSimpleProviderUserApplication.class, args);
+        SpringApplication.run(SimpleProviderApplication.class, args);
     }
 }
