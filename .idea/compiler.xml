@@ -6,10 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="service-consumer-movie" />
         <module name="service-discovery-eureka" />
-        <module name="service-simple-consumer-movie" />
-        <module name="service-simple-provider-user" />
+        <module name="service-entity" />
+        <module name="service-provider-user" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="service-simple-consumer-movie" target="1.7" />
+      <module name="service-simple-provider-user" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
