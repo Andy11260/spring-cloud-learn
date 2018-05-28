@@ -1,13 +1,26 @@
 server:
   port: 8782
 
+# spring-boot-actuator 配置
+management:
+  security:
+    enabled: false # spring-boot-actuator 是否需要鉴权
+endpoints:
+  pause:
+    enabled: true # 开启 actuator pause端点
+  shutdown:
+    enabled: true
+
 eureka:
   client:
+    healthcheck:
+      enabled: true
     service-url:
-      defaultZone: http://localhost:8760/eureka/ # 与eureka server交互地址
+      defaultZone: http://admin:admin$123@peer1:8760/eureka/,http://admin:admin$123@peer2:8761/eureka/ # 与eureka server交互地址
   instance:
     prefer-ip-address: false # true表示将该服务的ip注册到eureka server，
                             # 不配置或false则将服务所在系统hostname注册到eureka server
 spring:
   application:
       name: consumer-movie # 服务名称
+

@@ -7,7 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-consumer-movie" />
+        <module name="service-consumer-movie-ribbon" />
         <module name="service-discovery-eureka" />
+        <module name="service-discovery-eureka-ha" />
         <module name="service-entity" />
         <module name="service-provider-user" />
       </profile>

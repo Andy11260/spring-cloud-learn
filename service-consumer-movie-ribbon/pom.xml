@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.zm.cloud</groupId>
-    <artifactId>service-discovery-eureka</artifactId>
+    <artifactId>service-consumer-movie-ribbon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>service-discovery-eureka</name>
-    <description>eureka discovery project for Spring Boot</description>
+    <name>service-consumer-movie-ribbon</name>
+    <description>Spring Boot ribbon service</description>
 
     <parent>
         <groupId>com.zm.cloud</groupId>
@@ -20,12 +20,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- eureka -->
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
         </dependency>
     </dependencies>
 

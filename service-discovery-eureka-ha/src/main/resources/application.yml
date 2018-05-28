@@ -1,0 +1,45 @@
+#server:
+#  port: 8760
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    register-with-eureka: false #是否将该服务注册到eureka server，默认true，
+#                                #当前服务就是一个eureka server，无需注册，设置为false
+#    fetch-registry: false #是否从eureka server获取注册信息，默认true，
+#                          #单点eureka server无需同步其它eureka的节点信息，设置为false
+#    server-url:
+#      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  application:
+    name: discovery-eureka-ha
+  profiles:
+    active: peer2
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: admin$123
+---
+spring:
+  profiles: peer1
+server:
+  port: 8760
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin$123@peer2:8761/eureka/
+---
+spring:
+  profiles: peer2
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin$123@peer1:8760/eureka/
