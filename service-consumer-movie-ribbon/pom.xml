@@ -24,9 +24,17 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- eureka -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
+        </dependency>-->
+        <!--
+            注意：客户端eureka如果使用 spring-cloud-starter-eureka-server 提供的REST接口默认返回的是xml
+            格式数据，需要在url后加上.json，或者在request headers中加上accept=application/json
+         -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

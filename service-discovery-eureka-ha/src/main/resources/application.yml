@@ -17,7 +17,7 @@ spring:
     active: peer2
 security:
   basic:
-    enabled: true
+    enabled: true # true 启用认证，false关闭认证
   user:
     name: admin
     password: admin$123
