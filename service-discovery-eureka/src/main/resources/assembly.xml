@@ -1,0 +1,33 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+	<id>package</id>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<!-- 引入根目录 -->
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<!-- 归档文件集合 -->
+	<fileSets>
+		<!--将项目中src/main/runtime/bin下的脚本文件拷贝到压缩文件的根目录下 -->
+		<fileSet>
+			<directory>src/main/resources/</directory>
+			<outputDirectory>bin</outputDirectory>
+			<includes>
+				<include>*.sh</include>
+			</includes>
+			<fileMode>0755</fileMode>
+			<lineEnding>unix</lineEnding>
+		</fileSet>
+
+		<!--将项目中打包好的war包拷贝到压缩文件中 -->
+		<fileSet>
+			<directory>target</directory>
+			<outputDirectory>./</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+			</includes>
+			<fileMode>0664</fileMode>
+		</fileSet>
+
+	</fileSets>
+</assembly> 
