@@ -11,10 +11,10 @@
 #    server-url:
 #      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
 spring:
-  application:
-    name: discovery-eureka-ha
   profiles:
     active: peer2
+  application:
+    name: discovery-eureka-ha
 security:
   basic:
     enabled: true # true 启用认证，false关闭认证

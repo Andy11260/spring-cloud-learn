@@ -1,5 +1,5 @@
 server:
-  port: 8783
+  port: 8781
 
 # spring-boot-actuator 配置
 management:
@@ -21,7 +21,7 @@ eureka:
 
 spring:
   application:
-      name: provider-user # 服务名称
+      name: provider-user-auth # 服务名称
   jpa:
     generate-ddl: false
     show-sql: true

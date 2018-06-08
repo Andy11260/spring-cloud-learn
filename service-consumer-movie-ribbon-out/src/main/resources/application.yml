@@ -1,0 +1,21 @@
+server:
+  port: 8783
+
+# spring-boot-actuator 配置
+management:
+  security:
+    enabled: false # spring-boot-actuator 是否需要鉴权
+endpoints:
+  pause:
+    enabled: true # 开启 actuator pause端点
+  shutdown:
+    enabled: true
+
+spring:
+  application:
+      name: consumer-movie-ribbon-out # 服务名称
+
+provider-user:
+  ribbon:
+    listOfServers: localhost:8781,localhost:8782
+

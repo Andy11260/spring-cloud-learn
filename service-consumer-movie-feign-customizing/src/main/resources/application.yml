@@ -1,5 +1,5 @@
 server:
-  port: 8783
+  port: 8790
 
 # spring-boot-actuator 配置
 management:
@@ -8,34 +8,19 @@ management:
 endpoints:
   pause:
     enabled: true # 开启 actuator pause端点
+  shutdown:
+    enabled: true
 
 eureka:
   client:
+    healthcheck:
+      enabled: true
     service-url:
       defaultZone: http://admin:admin$123@peer1:8760/eureka/,http://admin:admin$123@peer2:8761/eureka/ # 与eureka server交互地址
   instance:
     prefer-ip-address: false # true表示将该服务的ip注册到eureka server，
                             # 不配置或false则将服务所在系统hostname注册到eureka server
-    metadata-map:
-      my-metadata: eureka自定义元数据
-
 spring:
   application:
-      name: provider-user # 服务名称
-  jpa:
-    generate-ddl: false
-    show-sql: true
-    hibernate:
-      ddl-auto: none
-  datasource:
-    platform: h2
-    schema: classpath:schema.sql
-    data: classpath:data.sql
-
-logging:
-  level:
-    root: info
-    org.hibernate: info
-    org.hibernate.type.descriptor.sql.basicBinder: trace
-    org.hibernate.type.descriptor.sql.basicExtractor: trace
+      name: consumer-movie-feign-customizing # 服务名称
 
