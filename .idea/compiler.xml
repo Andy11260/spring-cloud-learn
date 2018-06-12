@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="service-consumer-movie" />
+        <module name="service-consumer-movie-feign" />
+        <module name="service-consumer-movie-ribbon" />
+        <module name="service-consumer-movie-ribbon-customizing" />
+        <module name="service-consumer-movie-ribbon-properties" />
+        <module name="service-discovery-eureka" />
+        <module name="service-discovery-eureka-ha" />
+        <module name="service-entity" />
+        <module name="service-provider-user" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="service-simple-consumer-movie" target="1.7" />
+      <module name="service-simple-provider-user" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
