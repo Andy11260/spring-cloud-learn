@@ -79,4 +79,22 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <modules>
+        <module>hystrix-demo</module>
+        <module>service-entity</module>
+        <module>service-provider-user</module>
+        <module>service-provider-user-auth</module>
+        <module>service-consumer-movie</module>
+        <module>service-consumer-movie-ribbon</module>
+        <module>service-consumer-movie-ribbon-customizing</module>
+        <module>service-consumer-movie-ribbon-hystrix</module>
+        <module>service-consumer-movie-ribbon-out</module>
+        <module>service-consumer-movie-ribbon-properties</module>
+        <module>service-discovery-eureka</module>
+        <module>service-discovery-eureka-ha</module>
+        <module>service-consumer-movie-feign</module>
+        <module>service-consumer-movie-feign-manual</module>
+        <module>service-consumer-movie-feign-customizing</module>
+    </modules>
 </project>
