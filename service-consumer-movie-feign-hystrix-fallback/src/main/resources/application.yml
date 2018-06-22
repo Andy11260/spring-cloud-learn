@@ -1,0 +1,37 @@
+server:
+  port: 8790
+
+# spring-boot-actuator 配置
+management:
+  security:
+    enabled: false # spring-boot-actuator 是否需要鉴权
+endpoints:
+  pause:
+    enabled: true # 开启 actuator pause端点
+  shutdown:
+    enabled: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://admin:admin$123@peer1:8760/eureka/,http://admin:admin$123@peer2:8761/eureka/ # 与eureka server交互地址
+  instance:
+    prefer-ip-address: false # true表示将该服务的ip注册到eureka server，
+                            # 不配置或false则将服务所在系统hostname注册到eureka server
+spring:
+  application:
+      name: consumer-movie-client-feign-hystrix # 服务名称
+  http:
+    multipart:
+      max-file-size: 2048MB
+      max-request-size: 2048MB
+
+feign:
+  hystrix:
+    enabled: true
+# 说明：请务必注意，从Spring Cloud Dalston开始，Feign默认是不开启Hystrix的。
+# 因此，如使用Dalston请务必额外设置属性：feign.hystrix.enabled=true，否则断路器不会生效。
+# 而，Spring Cloud Angel/Brixton/Camden中，Feign默认都是开启Hystrix的。无需设置该属性。
+

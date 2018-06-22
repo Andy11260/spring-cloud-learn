@@ -1,0 +1,27 @@
+server:
+  port: 8700
+
+# spring-boot-actuator 配置
+management:
+  security:
+    enabled: false # spring-boot-actuator 是否需要鉴权
+endpoints:
+  pause:
+    enabled: true # 开启 actuator pause端点
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin$123@peer1:8760/eureka/,http://admin:admin$123@peer2:8761/eureka/ # 与eureka server交互地址
+  instance:
+    prefer-ip-address: true # true表示将该服务的ip注册到eureka server，
+                            # 不配置或false则将服务所在系统hostname注册到eureka server
+spring:
+  application:
+      name: service-sidecar # 服务名称
+sidecar:
+  port: 8680
+  health-uri: http://192.168.1.172:8680/health
+
+
+

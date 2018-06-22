@@ -55,6 +55,11 @@
             <artifactId>service-entity</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.44</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -96,5 +101,9 @@
         <module>service-consumer-movie-feign</module>
         <module>service-consumer-movie-feign-manual</module>
         <module>service-consumer-movie-feign-customizing</module>
+        <module>service-consumer-movie-feign-hystrix-fallback</module>
+        <module>service-hystrix-turbine</module>
+        <module>service-gateway-zuul</module>
+        <module>service-sidecar</module>
     </modules>
 </project>

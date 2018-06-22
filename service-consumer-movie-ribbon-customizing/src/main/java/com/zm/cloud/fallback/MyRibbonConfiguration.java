@@ -1,4 +1,4 @@
-package com.zm.cloud.config;
+package com.zm.cloud.fallback;
 
 import com.zm.config.RibbonConfiguration;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;

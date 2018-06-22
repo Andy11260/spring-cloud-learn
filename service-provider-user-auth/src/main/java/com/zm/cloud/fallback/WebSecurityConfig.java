@@ -1,4 +1,4 @@
-package com.zm.cloud.config;
+package com.zm.cloud.fallback;
 
 import com.zm.cloud.service.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
