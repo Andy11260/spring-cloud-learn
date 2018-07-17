@@ -105,5 +105,7 @@
         <module>service-hystrix-turbine</module>
         <module>service-gateway-zuul</module>
         <module>service-sidecar</module>
+
+        <module>spring-boot-starter-testconfig</module>
     </modules>
 </project>

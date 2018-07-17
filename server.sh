@@ -10,7 +10,8 @@ for loop in `ls $PROJECT_HOME/*.jar`;do
    JAR_NAME=${loop}
    break
 done
-SERVER_NAME=${JAR_NAME%%-*} #  %% 号截取，删除右边字符，保留左边字符
+SERVER_NAME=${JAR_NAME##*/} #  ## 号截取，删除左边字符，保留右边字符
+SERVER_NAME=${SERVER_NAME%.*} # %号截取，删除右边字符，保留左边字符,从右边开始，删除第一个出现的.及右边的字符
 PID=$(ps aux | grep ${JAR_NAME} | grep -v grep | awk '{print $2}' )
 SUF=".pid"
 
@@ -21,8 +22,9 @@ start(){
     nohup $JAVA_HOME/bin/java -jar ${JAR_NAME} > /dev/null 2>&1 &
     echo $! > ${SERVER_NAME}${SUF}
     echo "启动完成 $SERVER_NAME"
-    sleep 1s
-    tail -f $PROJECT_HOME/logs/$SERVER_NAME.log
+    echo "正在打印启动日志..."
+    sleep 3s
+    tail -f $PROJECT_HOME/logs/info.log
   else
       echo "$SERVER_NAME (pid  $PID) 正在运行..."
   fi
@@ -44,7 +46,7 @@ stop(){
     else
       echo "$SERVER_NAME 停止"
       kill -9 $PID
-      rm ${SERVER_NAME}${SUF}
+      rm ${PROJECT_HOME}/${SERVER_NAME}${SUF}
     fi
 }
 
