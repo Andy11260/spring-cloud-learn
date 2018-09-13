@@ -23,8 +23,10 @@ start(){
     echo $! > ${SERVER_NAME}${SUF}
     echo "启动完成 $SERVER_NAME"
     echo "正在打印启动日志..."
-    sleep 3s
-    tail -f $PROJECT_HOME/logs/info.log
+    sleep 6s
+    # 启动完成退出tail
+    tail -fn 0 --pid=`ps uxh|grep 'sed[[:space:]]\/Started'|awk '{print $2}'|sort -nr|head -1` $PROJECT_HOME/logs/info.log|sed /Started[[:space:]][[:alpha:]][[:space:]]in/Q
+    #tail -f $PROJECT_HOME/logs/info.log
   else
       echo "$SERVER_NAME (pid  $PID) 正在运行..."
   fi
