@@ -10,36 +10,98 @@
 #                          #单点eureka server无需同步其它eureka的节点信息，设置为false
 #    server-url:
 #      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#spring:
+#  profiles:
+#    active: peer1
+#  application:
+#    name: discovery-eureka-ha
+#---
+#spring:
+#  profiles: peer1
+#server:
+#  port: 8750
+#eureka:
+#  instance:
+#    hostname: 192.168.0.71
+#  client:
+#    serviceUrl:
+#      defaultZone: http://192.168.0.71:8751/eureka/,http://192.168.0.71:8750/eureka/
+#---
+#spring:
+#  profiles: peer2
+#server:
+#  port: 8751
+#eureka:
+#  instance:
+#    hostname: 192.168.0.71
+#  client:
+#    serviceUrl:
+#      defaultZone: http://192.168.0.71:8751/eureka/,http://192.168.0.71:8750/eureka/
+
+
 spring:
   profiles:
-    active: peer2
-  application:
-    name: discovery-eureka-ha
+    active: dev3
 security:
   basic:
-    enabled: true # true 启用认证，false关闭认证
-  user:
-    name: admin
-    password: admin$123
+    enabled: false # true 启用认证，false关闭认证
+##  user:
+##    name: admin
+##    password: admin$123
+
+
+
 ---
 spring:
-  profiles: peer1
+  profiles: dev1
+  application:
+    ### 当前服务名
+    name: eureka-peer1
 server:
-  port: 8760
-eureka:
-  instance:
-    hostname: peer1
-  client:
-    serviceUrl:
-      defaultZone: http://admin:admin$123@peer2:8761/eureka/
+  port: 8750
+  defaultZoneValue: http://localhost:8751/eureka/,http://localhost:8752/eureka/
+
+
+
 ---
 spring:
-  profiles: peer2
+  profiles: dev2
+  application:
+    name: eureka-peer2
 server:
-  port: 8761
+  port: 8751
+defaultZoneValue: http://localhost:8750/eureka/,http://localhost:8752/eureka/
+
+
+
+---
+spring:
+  profiles: dev3
+  application:
+    name: eureka-peer3
+server:
+  port: 8752
+defaultZoneValue: http://localhost:8750/eureka/,http://localhost:8751/eureka/
+
+
+
+---
 eureka:
   instance:
-    hostname: peer2
+    hostname: ${spring.application.name}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}
   client:
-    serviceUrl:
-      defaultZone: http://admin:admin$123@peer1:8760/eureka/
+    ## 是否检索服务，注册中心无需检索服务
+    fetch-registry: false
+    ## 是否将自己注册到eureka
+    register-with-eureka: false
+    ## 客户端默认去这个地址找注册中心
+    service-url:
+      defaultZone: ${defaultZoneValue}
+  server:
+    ### 当eureka启动时，不能从集群节点中获取到instance注册信息，应该等多久
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: true
+    ### eureka多长时间更新一次数据
+    peer-eureka-nodes-update-interval-ms: 100000
